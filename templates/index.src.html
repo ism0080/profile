@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="header relative -mt-[35px]">
+    <div class="container relative mx-auto h-screen px-4">
+        <div class="flex h-full items-center">
+            <div
+                class="mockup-code p-6 relative min-w-full overflow-hidden overflow-x-auto rounded-xl bg-gray-800/10 text-black backdrop-blur-xl md:min-w-[640px] md:p-12">
+                <div class="ml-6 flex">
+                    <div class="mr-4">
+                        {% for paragraph in ["Hi,", "I'm Isaac,", "Software
+                        Engineer"] %}
+                        <p class="font-open-sans sm:text-2xl md:pb-2 md:text-4xl">
+                            {{ paragraph }}
+                        </p>
+                        {% endfor %}
+                    </div>
+                    <img data-aos-delay="300" data-aos="fade-up" class="absolute right-5 top-5 h-[100px] w-[100px] rounded-full border border-gray-800 sm:bottom-0 sm:right-0 sm:top-[unset] sm:rounded-none sm:border-none md:h-[177px] md:w-[177px]"
+                        src="./assets/isaac_profile-nobg.png" alt="Isaac Mackle" />
+                </div>
+                <div class="mt-4">
+                    <code class="uppercase">
+                        <span class="text-xs sm:text-sm md:text-lg">
+                            {{ tech_stack }}
+                        </span>
+                    </code>
+                </div>
+            </div>
+        </div>
+        <div class="absolute bottom-3 md:bottom-10 right-0 z-50 px-4">
+            <ul class="flex">
+                {% for button in social_buttons %}
+                <li class="px-1 text-4xl">
+                    <button class="text-chathams-blue-800/90 hover:scale-125 transition-transform">
+                        <a href="{{button.url}}" target="_blank" rel="noopener noreferrer">
+                            {% include button.template %}
+                        </a>
+                    </button>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    {% include "components/_waves.html" %}
+</div>
+<div class="my-20 mx-auto px-4">
+    <h2 class="text-center text-4xl mb-10">{{ completed_projects.title }}</h2>
+    <div class="flex flex-wrap gap-4 flex-col md:flex-row justify-center">
+        {% for project in completed_projects.projects %}
+        {% with project=project %}
+        {% include "components/_project_card.html" %}
+        {% endwith %}
+        {% endfor %}
+    </div>
+    <div class="mb-8"></div>
+    <h2 class="text-center text-4xl mb-10">{{ personal_projects.title }}</h2>
+    <div class="flex gap-4 flex-col md:flex-row justify-center">
+        {% for project in personal_projects.projects %}
+        {% with project=project %}
+        {% include "components/_project_card.html" %}
+        {% endwith %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock content %}

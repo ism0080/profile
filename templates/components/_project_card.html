@@ -1,0 +1,48 @@
+<div
+    data-aos="fade-up"
+    data-aos-offset="150"
+    class="border-solid border border-shadow-green-200 rounded-2xl grow-0 shrink basis-[30%]"
+>
+    <figure class="rounded-2xl p-4">
+        <img
+            loading="lazy"
+            src="{{ project.img.src }}"
+            alt="{{ project.img.alt }}"
+            class="max-w-full h-auto rounded-2xl max-h-[250px] w-full object-cover object-center"
+        />
+        <figcaption>
+            <p
+                class="overflow-hidden text-ellipsis whitespace-nowrap mt-1 font-semibold"
+            >
+                {{ project.title }}
+            </p>
+            <p>{{ project.description }}</p>
+            <div class="flex gap-4 mt-4 items-center">
+                <a
+                    href="{{ project.target }}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <button
+                        class="bg-chathams-blue-950 rounded px-4 py-1 text-white hover:bg-chathams-blue-700 duration-150 ease-in-out"
+                    >
+                        Website
+                    </button>
+                </a>
+                {% if project.source is defined %}
+                <a
+                    href="{{ project.source }}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    <div
+                        class="hover:font-medium text-sm duration-150 ease-in-out"
+                    >
+                        Source
+                    </div>
+                </a>
+            </div>
+            {% endif %}
+        </figcaption>
+    </figure>
+</div>

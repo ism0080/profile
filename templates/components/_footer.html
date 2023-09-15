@@ -1,0 +1,12 @@
+<footer
+    class="flex gap-4 justify-center w-full bg-shadow-green-100 h-[60px] items-center mt-4"
+>
+    <a href="mailto:{{ email }}" target="_blank" rel="noopener noreferrer">
+        <p class="hover:font-bold">Email</p>
+    </a>
+    {% for link in social_buttons %}
+    <a href="{{ link.url }}" target="_blank" rel="noopener noreferrer">
+        <p class="hover:font-bold">{{ link.label }}</p>
+    </a>
+    {% endfor %}
+</footer>
