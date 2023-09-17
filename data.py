@@ -1,3 +1,5 @@
+base_url = "https://isaacmackle.com"
+
 social_buttons = [
     {"url": "https://github.com/ism0080",
         "template": "icons/_github.html", "label": "GitHub"},
