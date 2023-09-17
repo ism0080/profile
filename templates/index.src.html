@@ -30,11 +30,11 @@
             <ul class="flex">
                 {% for button in social_buttons %}
                 <li class="px-1 text-4xl">
-                    <button class="text-chathams-blue-800/90 hover:scale-125 transition-transform">
-                        <a href="{{button.url}}" target="_blank" rel="noopener noreferrer">
+                    <div class="text-chathams-blue-800/90 hover:scale-125 transition-transform">
+                        <a href="{{button.url}}" aria-label="{{button.label}}" target="_blank" rel="noopener noreferrer">
                             {% include button.template %}
                         </a>
-                    </button>
+                    </div>
                 </li>
                 {% endfor %}
             </ul>
