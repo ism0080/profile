@@ -53,7 +53,7 @@
     </div>
     <div class="mb-8"></div>
     <h2 class="text-center text-4xl mb-10">{{ personal_projects.title }}</h2>
-    <div class="flex gap-4 flex-col md:flex-row justify-center">
+    <div class="flex flex-wrap gap-4 flex-col md:flex-row justify-center">
         {% for project in personal_projects.projects %}
         {% with project=project %}
         {% include "components/_project_card.html" %}
