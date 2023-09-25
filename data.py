@@ -1,3 +1,20 @@
+import requests
+import json
+
+
+def getProjects(type):
+    basePath = 'https://admin.isaacmackle.com/api'
+    res = requests.get(
+        f"{basePath}/collections/projects/records?fields=title,description,image,project_type,source,target,collectionId,id,img_alt&filter=(project_type='{type}')")
+    response = res.json()
+
+    for project in response['items']:
+        project['img'] = {
+            "src": f"{basePath}/files/{project['collectionId']}/{project['id']}/{project['image']}", "alt": project["img_alt"]}
+
+    return response['items']
+
+
 base_url = "https://isaacmackle.com"
 
 social_buttons = [
@@ -9,97 +26,12 @@ social_buttons = [
 
 personal_projects = {
     "title": "Personal Projects",
-    "projects": [
-        {
-            "img": {
-                "src": "https://s3-ap-southeast-2.amazonaws.com/graph.isaacmackle.com-images/lyric-project.png",
-                "alt": "Random Song Lyric"
-            },
-            "title": "Lyrc • Random Song Lyric",
-            "description": "Simple use of Genius-API to search for an artist and return a random song lyric.",
-            "target": "https://lyric.mackle.im",
-            "source": "https://github.com/ism0080/random-song-lyric"
-        },
-        {
-            "img": {
-                "src": "https://s3-ap-southeast-2.amazonaws.com/graph.isaacmackle.com-images/comic-project.png",
-                "alt": "Comic Strip ReadMe"
-            },
-            "title": "Comic Strip Readme • GitHub Action",
-            "description": "This GitHub Workflow updates your readme with the latest XKCD comic.",
-            "target": "https://github.com/marketplace/actions/comic-strip-readme",
-            "source": "https://github.com/ism0080/comicstrip-readme"
-        }
-    ]
+    "projects": getProjects('personal')
 }
 
 completed_projects = {
     "title": "Completed Projects",
-    "projects": [
-        {
-            "img": {
-                "src": "./assets/yonda-hero.png",
-                "alt": "Yonda"
-            },
-            "title": "Xode • Yonda",
-            "description": "Marketing website for Yonda, built using NextJS, TypeScript and Strapi.",
-            "target": "https://yonda.nz"
-        },
-        {
-            "img": {
-                "src": "./assets/calder-stewart-hero.png",
-                "alt": "Calder Stewart"
-            },
-            "title": "Xode • Calder Stewart",
-            "description": "Marketing website for Calder Stewart, built using NextJS, TypeScript and Strapi.",
-            "target": "https://calderstewart.co.nz"
-        },
-        {
-            "img": {
-                "src": "./assets/p42-hero.png",
-                "alt": "Parallel 42"
-            },
-            "title": "Xode • P42",
-            "description": "Marketing website for P42, built using NextJS, TypeScript and Strapi.",
-            "target": "https://p42.co.nz"
-        },
-        {
-            "img": {
-                "src": "./assets/xode-hero.png",
-                "alt": "Xode"
-            },
-            "title": "Xode • Xode",
-            "description": "Marketing website for Xode, built using NextJS, TypeScript and Strapi.",
-            "target": "https://xode.nz"
-        },
-        {
-            "img": {
-                "src": "./assets/kahui-group-hero.png",
-                "alt": "Kahui Group"
-            },
-            "title": "Xode • Kahui Group",
-            "description": "Marketing website for Kahui Group, built using NextJS, TypeScript and Strapi.",
-            "target": "https://kahuigroup.com"
-        },
-        {
-            "img": {
-                "src": "./assets/quicta-hero.jpg",
-                "alt": "Quicta"
-            },
-            "title": "Xode • Quicta by Jcurve Solutions",
-            "description": "A service management solution for organisations to allocate operational resources using a booking system, built using NextJS, TypeScript and Firebase.",
-            "target": "https://www.jcurvesolutions.com/quicta/"
-        },
-        {
-            "img": {
-                "src": "./assets/dominos-hero.png",
-                "alt": "Domino's Pizza Enterprise"
-            },
-            "title": "Domino's • Online Ordering Platform",
-            "description": "Contributed towards the re-brand of the ordering website, in the form of a SPA built using ReactJS, TypeScript and GraphQL.",
-            "target": "https://order.dominos.co.nz/"
-        }
-    ]
+    "projects": getProjects('completed')
 }
 
 RESUME = {

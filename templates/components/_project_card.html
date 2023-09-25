@@ -29,7 +29,7 @@
                         Website
                     </button>
                 </a>
-                {% if project.source is defined %}
+                {% if project.source is defined and project.source != "" %}
                 <a
                     href="{{ project.source }}"
                     target="_blank"
