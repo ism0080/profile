@@ -18,6 +18,7 @@
             </p>
             <p>{{ project.description }}</p>
             <div class="flex gap-4 mt-4 items-center">
+                {% if project.target is defined and project.target != "" %}
                 <a
                     href="{{ project.target }}"
                     target="_blank"
@@ -29,7 +30,8 @@
                         Website
                     </button>
                 </a>
-                {% if project.source is defined and project.source != "" %}
+                {% endif %} {% if project.source is defined and project.source
+                != "" %}
                 <a
                     href="{{ project.source }}"
                     target="_blank"
