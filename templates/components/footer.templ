@@ -1,0 +1,19 @@
+package components
+
+import (
+  "fmt"
+  "github.com/ism0080/profile/models"
+)
+
+templ Footer(data models.Footer) {
+  <footer class="flex gap-4 justify-center w-full bg-shadow-green-100 h-[60px] items-center mt-4">
+    <a href={ templ.URL(string(fmt.Sprintf("mailto:%s", data.Email))) } target="_blank" rel="noopener noreferrer">
+        <p class="hover:font-bold">Email</p>
+    </a>
+    for _, button := range data.Links {
+      <a href={ templ.URL(button.Url) } target="_blank" rel="noopener noreferrer">
+          <p class="hover:font-bold">{ button.Label }</p>
+      </a>
+    }
+</footer>
+}

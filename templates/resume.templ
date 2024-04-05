@@ -1,0 +1,58 @@
+package templates
+
+import (
+	"github.com/ism0080/profile/models"
+)
+
+templ Resume(data models.ResumePage) {
+	@Base(data.Base) {
+		<div class="prose prose-headings:text-black container mx-auto px-4 text-black">
+			<h1>{ data.Resume.Title }</h1>
+			<p>{ data.Resume.Blurb }</p>
+			<div>
+				<h2>{ data.Resume.Experience.Title }</h2>
+				<div class="ml-4">
+					for _, job := range data.Resume.Experience.Jobs {
+						<p class="mb-0 font-bold">{ job.Role }</p>
+						<p class="my-0 font-extralight">{ job.Company }</p>
+						<p class="mt-0">{ job.Description }</p>
+						<div>
+							for _, example := range job.Examples {
+								<p class="mb-0 underline">{ example.Role }</p>
+								<ul>
+									for _, ex :=  range example.Experiences {
+										<li>
+											<span class="font-bold">{ ex.Project }: </span>
+											<span>{ ex.Description }</span>
+											if ex.Description != "" && ex.Technology != "" {
+												<span>- </span>
+											}
+											<span class="italic">{ ex.Technology }</span>
+										</li>
+									}
+								</ul>
+							}
+						</div>
+					}
+				</div>
+			</div>
+			<div>
+				<h2>{ data.Resume.Skills.Title }</h2>
+				<div class="ml-4">
+					for _, skill := range data.Resume.Skills.Skills {
+						<p><span class="font-bold">{ skill.Key }</span> { skill.Value }</p>
+					}
+				</div>
+			</div>
+			<div>
+				<h2>{ data.Resume.Skills.Other.Title }</h2>
+				<div class="ml-4">
+					for _, skill := range data.Resume.Skills.Other.Skills {
+						<p><span class="font-bold">{ skill.Key }</span> { skill.Value }</p>
+					}
+				</div>
+			</div>
+			<button>Button Resume</button>
+		</div>
+	}
+}

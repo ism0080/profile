@@ -25,25 +25,37 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
+      - name: 🛒 Checkout
+        id: checkout
         uses: actions/checkout@v3
-      - name: Setup Python 3.11.5
-        uses: actions/setup-python@v4
+      - name: ⚙️ Setup Node.js
+        id: setup-nodejs
+        uses: actions/setup-node@main
         with:
-          python-version: '3.11.5' 
-          cache: 'pip'
-      - name: Install dependencies
+          node-version: 20.x
+          cache: npm
+      - name: ⚙️ Setup GoLang 1.21.0
+        id: setup
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.21.0' 
+      - name: 📨 Install dependencies
+        id: install-deps
         run: |
-          pip install -r requirements.txt
-      - name: Write HTML Templates
+          go mod download
+          npm i -g tailwindcss
+      - name: 🔨 Write HTML Templates
+        id: build
         run: |
-          python write.py
-      - name: Setup Pages
+          go run .\main.go
+      - name: ⚙️ Setup Pages
+        id: configure-pages
         uses: actions/configure-pages@v3
-      - name: Upload artifact
+      - name: 📦️ Upload artifact
+        id: upload-artifact
         uses: actions/upload-pages-artifact@v2
         with:
           path: 'public'
-      - name: Deploy to GitHub Pages
+      - name: 🚀 Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2

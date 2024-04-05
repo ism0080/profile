@@ -1,0 +1,56 @@
+package templates
+
+import (
+  "github.com/ism0080/profile/models"
+  "github.com/ism0080/profile/templates/components"
+)
+
+templ Base(data models.Page) {
+<!DOCTYPE html>
+<html lang="en">
+    <link rel="stylesheet" href="./styles.min.css" />
+
+    <head>
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width,initial-scale=1,shrink-to-fit=no"
+        />
+        <meta name="title" content={ data.Meta.Title } />
+        <meta property="og:title" content={ data.Meta.Title } />
+        <meta property="twitter:title" content={ data.Meta.Title } />
+        <meta name="description" content={ data.Meta.Description } />
+        <meta property="og:description" content={ data.Meta.Description } />
+        <meta property="twitter:description" content={ data.Meta.Description } />
+        <meta property="og:image" content={ data.Meta.Image } />
+        <meta property="twitter:image" content={ data.Meta.Image } />
+        <meta property="og:type" content="website" />
+        <link rel="canonical" href={ data.Meta.Url } />
+        <meta property="og:url" content={ data.Meta.Url } />
+        <meta property="twitter:url" content={ data.Meta.Url } />
+        <meta property="twitter:card" content="summary_large_image" />
+
+        <title>{ data.Title }</title>
+        
+        <link rel="shortcut icon" href="./assets/isaac_profile-nobg.png" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,400&amp;display=swap" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet" />
+        <!-- AOS Start -->
+        <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+        <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+        <!-- AOS End -->
+    </head>
+
+    <body>
+        @components.Navigation(data.Navigation)
+        { children... }
+        @components.Footer(data.Footer)
+        <script type="text/javascript">
+            AOS.init();
+        </script>
+    </body>
+</html>
+}

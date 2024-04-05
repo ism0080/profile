@@ -1,26 +1,33 @@
-<div
+package components
+
+import (
+  "github.com/ism0080/profile/models"
+)
+
+templ ProjectCard(project models.Project) {
+  <div
     data-aos="fade-up"
     data-aos-offset="150"
     class="border-solid border border-shadow-green-200 rounded-2xl grow-0 shrink basis-[30%]"
->
+  >
     <figure class="rounded-2xl p-4">
         <img
             loading="lazy"
-            src="{{ project.img.src }}"
-            alt="{{ project.img.alt }}"
+            src={ project.Image.Src }
+            alt={ project.Image.Alt }
             class="max-w-full h-auto rounded-2xl max-h-[250px] w-full object-cover object-center"
         />
         <figcaption>
             <p
                 class="overflow-hidden text-ellipsis whitespace-nowrap mt-1 font-semibold"
             >
-                {{ project.title }}
+                { project.Title }
             </p>
-            <p>{{ project.description }}</p>
+            <p>{ project.Description }</p>
             <div class="flex gap-4 mt-4 items-center">
-                {% if project.target is defined and project.target != "" %}
+                if project.Target != "" {
                 <a
-                    href="{{ project.target }}"
+                    href={ templ.URL(project.Target) }
                     target="_blank"
                     rel="noopener noreferrer"
                 >
@@ -30,10 +37,10 @@
                         Website
                     </button>
                 </a>
-                {% endif %} {% if project.source is defined and project.source
-                != "" %}
+                }
+                if project.Source != "" {
                 <a
-                    href="{{ project.source }}"
+                    href={ templ.URL(project.Source) }
                     target="_blank"
                     rel="noopener noreferrer"
                 >
@@ -43,8 +50,10 @@
                         Source
                     </div>
                 </a>
+                }
             </div>
-            {% endif %}
         </figcaption>
     </figure>
 </div>
+
+}
