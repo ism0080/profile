@@ -1,9 +1,3 @@
-# ToDo
-
-- Reduce asset size
-- Add resume page
-- Fix watchdog
-
 ## Getting Started
 
 Install Dependencies
