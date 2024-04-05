@@ -10,7 +10,7 @@ on:
       - webhook
 
 permissions:
-  contents: read
+  contents: write
   pages: write
   id-token: write
 
@@ -42,7 +42,12 @@ jobs:
         id: install-deps
         run: |
           go mod download
+          go install github.com/a-h/templ/cmd/templ@latest
           npm i -g tailwindcss
+      - name: 🔨 Generate Templates
+        id: tempalte-generate
+        run: |
+          templ generate
       - name: 🔨 Write HTML Templates
         id: build
         run: |
@@ -58,3 +63,9 @@ jobs:
       - name: 🚀 Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
+      - name: 🍱 Commit template updates
+        id: commit-changes
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: 🍱 Templates Generated
+          file_pattern: '*_templ.go'
