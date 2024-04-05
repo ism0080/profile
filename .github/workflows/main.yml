@@ -46,7 +46,7 @@ jobs:
       - name: 🔨 Write HTML Templates
         id: build
         run: |
-          go run ${{ github.workspace }}main.go
+          go run main.go
       - name: ⚙️ Setup Pages
         id: configure-pages
         uses: actions/configure-pages@v3
