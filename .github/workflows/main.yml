@@ -10,7 +10,7 @@ on:
       - webhook
 
 permissions:
-  contents: write
+  contents: read
   pages: write
   id-token: write
 
@@ -63,9 +63,3 @@ jobs:
       - name: 🚀 Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v2
-      - name: 🍱 Commit template updates
-        id: commit-changes
-        uses: stefanzweifel/git-auto-commit-action@v5
-        with:
-          commit_message: 🍱 Templates Generated
-          file_pattern: '*_templ.go'
