@@ -2,3 +2,4 @@ __pycache__
 public
 .vscode
 .exe
+*_templ.go
