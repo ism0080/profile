@@ -72,8 +72,8 @@ type HomePage struct {
 	Paragraph         []string
 	TechStack         string
 	SocialButtons     SocialButtons
-	PersonalProjects  PersonalProjects
-	CompletedProjects CompletedProjects
+	PersonalProjects  ProjectSection
+	CompletedProjects ProjectSection
 }
 
 type ResumePage struct {
@@ -81,12 +81,7 @@ type ResumePage struct {
 	Resume Resume
 }
 
-type CompletedProjects struct {
-	Title    string
-	Projects Projects
-}
-
-type PersonalProjects struct {
+type ProjectSection struct {
 	Title    string
 	Projects Projects
 }

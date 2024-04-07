@@ -16,15 +16,15 @@ const (
 	ApiBasePath             = "https://admin.isaacmackle.com/api"
 )
 
-func completedProjects() models.CompletedProjects {
-	return models.CompletedProjects{
+func completedProjects() models.ProjectSection {
+	return models.ProjectSection{
 		Title:    "Completed Projects",
 		Projects: getProjects(Completed),
 	}
 }
 
-func personalProjects() models.PersonalProjects {
-	return models.PersonalProjects{
+func personalProjects() models.ProjectSection {
+	return models.ProjectSection{
 		Title:    "Personal Projects",
 		Projects: getProjects(Personal),
 	}
