@@ -10,11 +10,11 @@ func ResumeData() models.Resume {
 		Blurb: "Software engineer specialising in React, .Net Core and AWS. Prepared to face any challenge thrown at me, I am a hardworking fast learner with proven experience to work will in a team environment.",
 		Info: models.ResumeInfo{
 			Phone:    "+6427 788 4011",
-			Email:    "isaac.mackle@gmail.com",
+			Email:    email,
 			Location: "Christchurch",
 			Website:  "isaacmackle.com",
-			GitHub:   "github.com/ism0080",
-			LinkedIn: "linkedin.com/in/ism0080",
+			GitHub:   githubUrl,
+			LinkedIn: linkedinUrl,
 		},
 		Experience: models.ResumeExperience{
 			Title: "Experience",

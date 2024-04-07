@@ -10,8 +10,8 @@ func HomePageData(baseUrl string) models.HomePage {
 		Paragraph: []string{"Hi,", "I'm Isaac,", "Software Engineer"},
 		TechStack: "{ .Net Core • React • AWS }",
 		SocialButtons: models.SocialButtons{
-			models.NewSocialButton("https://github.com/ism0080", "GitHub", icons.GitHub()),
-			models.NewSocialButton("https://www.linkedin.com/in/ism0080", "LinkedIn", icons.LinkedIn()),
+			models.NewSocialButton(githubUrl, "GitHub", icons.GitHub()),
+			models.NewSocialButton(linkedinUrl, "LinkedIn", icons.LinkedIn()),
 		},
 		CompletedProjects: completedProjects(),
 		PersonalProjects:  personalProjects(),
@@ -27,10 +27,10 @@ func HomePageData(baseUrl string) models.HomePage {
 				models.NewMenuItem("Home", "./index.html"),
 			},
 			Footer: models.Footer{
-				Email: "isaac.mackle@gmail.com",
+				Email: email,
 				Links: []models.FooterLink{
-					models.NewFooterLink("https://github.com/ism0080", "GitHub"),
-					models.NewFooterLink("https://www.linkedin.com/in/ism0080", "LinkedIn"),
+					models.NewFooterLink(githubUrl, "GitHub"),
+					models.NewFooterLink(linkedinUrl, "LinkedIn"),
 				},
 			},
 		},
