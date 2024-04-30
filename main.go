@@ -15,7 +15,7 @@ import (
 
 const (
 	BaseUrl  string = "https://isaacmackle.com"
-	RootPath string = "public"
+	OutputDir string = "public"
 )
 
 func main() {
@@ -32,14 +32,14 @@ func main() {
 	}
 
 	runTailwind()
-	err = cp.Copy("./assets", fmt.Sprintf("%s/assets", RootPath))
+	err = cp.Copy("./assets", fmt.Sprintf("%s/assets", OutputDir))
 	if err != nil {
 		log.Fatalf("Failed to copy assets directory: %v", err)
 	}
 }
 
 func runTailwind() {
-	cmd := exec.Command("tailwindcss", "-i", "./index.css", "-o", fmt.Sprintf("%s/styles.min.css", RootPath), "--minify")
+	cmd := exec.Command("tailwindcss", "-i", "./index.css", "-o", fmt.Sprintf("%s/styles.min.css", OutputDir), "--minify")
 
 	_, err := cmd.Output()
 	if err != nil {
@@ -50,9 +50,9 @@ func runTailwind() {
 
 func createDirIfNotExists() {
 	// Check if the directory exists
-	if _, err := os.Stat(RootPath); os.IsNotExist(err) {
+	if _, err := os.Stat(OutputDir); os.IsNotExist(err) {
 		// Directory does not exist, create it
-		if err := os.Mkdir(RootPath, 0755); err != nil {
+		if err := os.Mkdir(OutputDir, 0755); err != nil {
 			log.Fatalf("failed to create output directory: %v", err)
 		}
 	} else if err != nil {
@@ -62,7 +62,7 @@ func createDirIfNotExists() {
 }
 
 func createFile(fileName string) *os.File {
-	name := path.Join(RootPath, fileName)
+	name := path.Join(OutputDir, fileName)
 	f, err := os.Create(name)
 	if err != nil {
 		log.Fatalf("failed to create output file: %v", err)
