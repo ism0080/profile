@@ -1,26 +1,46 @@
 package components
 
 import (
-"github.com/ism0080/profile/models"
-"github.com/ism0080/profile/templates/icons"
+	"github.com/ism0080/profile/models"
+	"github.com/ism0080/profile/templates/icons"
 )
 
 script copyToClipboard(value string) {
+const popover = document.createElement("article");
+popover.textContent = "Copied!";
+popover.classList.add("bg-chathams-blue-950", "rounded", "px-4","py-1", "text-white");
+popover.setAttribute("role", "alert");
+document.body.appendChild(popover);
+popover.popover = "manual";
+popover.showPopover();
+
+setTimeout(() => {
+popover.hidePopover();
+popover.remove();
+}, 2000);
+
 window.navigator.clipboard.writeText(value);
 }
 
 templ Footer(data models.Footer) {
-<footer class="flex gap-4 justify-center w-full bg-shadow-green-100 h-[60px] items-center mt-4">
-  <div class="flex items-center gap-2">
-    <button onclick={ copyToClipboard(data.Email) }>
-      @icons.Copy()
-    </button>
-    <p class="select-all">{ data.Email }</p>
-  </div>
-  for _, button := range data.Links {
-  <a href={ templ.URL(button.Url) } target="_blank" rel="noopener noreferrer">
-    <p class="hover:font-bold">{ button.Label }</p>
-  </a>
+	<style type="text/css">
+  :popover-open {
+    inset: unset;
+    left: 15px;
+    bottom: 70px;
   }
-</footer>
+</style>
+	<footer class="flex gap-4 justify-center w-full bg-shadow-green-100 h-[60px] items-center mt-4">
+		<div class="flex items-center gap-2">
+			<button onclick={ copyToClipboard(data.Email) }>
+				@icons.Copy()
+			</button>
+			<p class="select-all">{ data.Email }</p>
+		</div>
+		for _, button := range data.Links {
+			<a href={ templ.URL(button.Url) } target="_blank" rel="noopener noreferrer">
+				<p class="hover:font-bold">{ button.Label }</p>
+			</a>
+		}
+	</footer>
 }
