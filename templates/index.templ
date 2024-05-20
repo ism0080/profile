@@ -1,76 +1,71 @@
 package templates
 
 import (
-	"github.com/ism0080/profile/models"
-	"github.com/ism0080/profile/templates/components"
+"github.com/ism0080/profile/models"
+"github.com/ism0080/profile/templates/components"
 )
 
 templ Index(data models.HomePage) {
-	@Base(data.Base) {
-		<div class="header relative -mt-[35px]">
-			<div class="container relative mx-auto h-dvh px-4">
-				<div class="flex h-full items-center">
-					<div
-						class="mockup-code p-6 relative min-w-full overflow-hidden overflow-x-auto rounded-xl bg-gray-800/10 text-black backdrop-blur-xl md:min-w-[640px] md:p-12"
-					>
-						<div class="ml-6 flex">
-							<div class="mr-4">
-								for _, text := range data.Paragraph {
-									<p class="font-open-sans sm:text-2xl md:pb-2 md:text-4xl">
-										{ text }
-									</p>
-								}
-							</div>
-							<img
-								data-aos-delay="300"
-								data-aos="fade-up"
-								class="absolute right-5 top-5 h-[100px] w-[100px] rounded-full border border-gray-800 sm:bottom-0 sm:right-0 sm:top-[unset] sm:rounded-none sm:border-none md:h-[177px] md:w-[177px]"
-								src="./assets/isaac_profile-nobg.png"
-								alt="Isaac Mackle"
-							/>
-						</div>
-						<div class="mt-4">
-							<code class="uppercase">
-								<span class="text-xs sm:text-sm md:text-lg">
-									{ data.TechStack }
-								</span>
-							</code>
-						</div>
+@Base(data.Base) {
+<div class="header relative -mt-[35px]">
+	<div class="container relative mx-auto h-dvh px-4">
+		<div class="flex h-full items-center">
+			<div
+				class="mockup-code p-6 relative min-w-full overflow-hidden overflow-x-auto rounded-xl bg-gray-800/10 text-black backdrop-blur-xl md:min-w-[640px] md:p-12">
+				<div class="ml-6 flex">
+					<div class="mr-4">
+						for _, text := range data.Paragraph {
+						<p class="font-open-sans sm:text-2xl md:pb-2 md:text-4xl">
+							{ text }
+						</p>
+						}
 					</div>
+					<img
+						class="absolute right-5 top-5 h-[100px] w-[100px] rounded-full border border-gray-800 sm:bottom-0 sm:right-0 sm:top-[unset] sm:rounded-none sm:border-none md:h-[177px] md:w-[177px]"
+						src="./assets/isaac_profile-nobg.png" alt="Isaac Mackle" />
 				</div>
-				@social_section(data.SocialButtons)
+				<div class="mt-4">
+					<code class="uppercase">
+						<span class="text-xs sm:text-sm md:text-lg">
+							{ data.TechStack }
+						</span>
+					</code>
+				</div>
 			</div>
-			@components.Waves()
 		</div>
-		<div class="my-20 mx-auto px-4">
-			@projects(data.CompletedProjects)
-			<div class="mb-8"></div>
-			@projects(data.PersonalProjects)
-		</div>
-	}
+		@social_section(data.SocialButtons)
+	</div>
+	@components.Waves()
+</div>
+<div class="my-20 mx-auto px-4">
+	@projects(data.CompletedProjects)
+	<div class="mb-8"></div>
+	@projects(data.PersonalProjects)
+</div>
+}
 }
 
 templ projects(project models.ProjectSection) {
-	<h2 class="text-center text-4xl mb-10">{ project.Title }</h2>
-	<div class="flex flex-wrap gap-4 flex-col md:flex-row justify-center">
-		for _, p := range project.Projects {
-			@components.ProjectCard(p)
-		}
-	</div>
+<h2 class="text-center text-4xl mb-10">{ project.Title }</h2>
+<div class="flex flex-wrap gap-4 flex-col md:flex-row justify-center">
+	for _, p := range project.Projects {
+	@components.ProjectCard(p)
+	}
+</div>
 }
 
 templ social_section(buttons models.SocialButtons) {
-	<div class="absolute bottom-3 md:bottom-10 right-0 z-50 px-4">
-		<ul class="flex">
-			for _, button := range buttons {
-				<li class="px-1 text-4xl">
-					<div class="text-chathams-blue-800/90 hover:scale-125 transition-transform">
-						<a href={ templ.URL(button.Url) } aria-label={ button.Label } target="_blank" rel="noopener noreferrer">
-							@button.Component
-						</a>
-					</div>
-				</li>
-			}
-		</ul>
-	</div>
+<div class="absolute bottom-3 md:bottom-10 right-0 z-50 px-4">
+	<ul class="flex">
+		for _, button := range buttons {
+		<li class="px-1 text-4xl">
+			<div class="text-chathams-blue-800/90 hover:scale-125 transition-transform">
+				<a href={ templ.URL(button.Url) } aria-label={ button.Label } target="_blank" rel="noopener noreferrer">
+					@button.Component
+				</a>
+			</div>
+		</li>
+		}
+	</ul>
+</div>
 }
