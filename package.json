@@ -1,0 +1,24 @@
+{
+  "name": "profile",
+  "version": "1.0.0",
+  "description": "Install Dependencies",
+  "main": "tailwind.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://ism0080: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@github.com/ism0080/profile.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ism0080/profile/issues"
+  },
+  "homepage": "https://github.com/ism0080/profile#readme",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.5",
+    "tailwindcss": "^4.1.5"
+  }
+}
