@@ -1,7 +1,7 @@
 package data
 
 import (
-	"github.com/ism0080/profile/models"
+	"github.com/ism0080/profile/cmd/models"
 )
 
 func ResumeData() models.Resume {

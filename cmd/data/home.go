@@ -1,8 +1,8 @@
 package data
 
 import (
-	"github.com/ism0080/profile/models"
-	"github.com/ism0080/profile/templates/icons"
+	"github.com/ism0080/profile/cmd/models"
+	"github.com/ism0080/profile/cmd/templates/icons"
 )
 
 func HomePageData(baseUrl string) models.HomePage {

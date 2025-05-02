@@ -27,12 +27,10 @@ jobs:
     steps:
       - name: 🛒 Checkout
         id: checkout
-        uses: actions/checkout@v3
-      - name: ⚙️ Setup Node.js
-        id: setup-nodejs
-        uses: actions/setup-node@main
-        with:
-          node-version: 20.x
+        uses: actions/checkout@v4
+      - name: ⚙️ Setup Bun
+        id: setup-bunjs
+        uses: oven-sh/setup-bun@v2
       - name: ⚙️ Setup GoLang 1.21.0
         id: setup
         uses: actions/setup-go@v4
@@ -43,15 +41,15 @@ jobs:
         run: |
           go mod download
           go install github.com/a-h/templ/cmd/templ@latest
-          npm i -g tailwindcss
-      - name: 🔨 Generate Templates
-        id: tempalte-generate
+          bun install
+      - name: 🔨 Generate Sytles & Templates
+        id: tailwindcss-cli
         run: |
-          templ generate
+          bun run generate
       - name: 🔨 Write HTML Templates
         id: build
         run: |
-          go run main.go
+          go run cmd/main.go
       - name: ⚙️ Setup Pages
         id: configure-pages
         uses: actions/configure-pages@v3

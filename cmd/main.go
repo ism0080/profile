@@ -5,16 +5,15 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"os/exec"
 	"path"
 
-	"github.com/ism0080/profile/data"
-	"github.com/ism0080/profile/templates"
+	"github.com/ism0080/profile/cmd/data"
+	"github.com/ism0080/profile/cmd/templates"
 	cp "github.com/otiai10/copy"
 )
 
 const (
-	BaseUrl  string = "https://isaacmackle.com"
+	BaseUrl   string = "https://isaacmackle.com"
 	OutputDir string = "public"
 )
 
@@ -31,20 +30,9 @@ func main() {
 		log.Fatalf("failed to write index page: %v", err)
 	}
 
-	runTailwind()
 	err = cp.Copy("./assets", fmt.Sprintf("%s/assets", OutputDir))
 	if err != nil {
 		log.Fatalf("Failed to copy assets directory: %v", err)
-	}
-}
-
-func runTailwind() {
-	cmd := exec.Command("tailwindcss", "-i", "./index.css", "-o", fmt.Sprintf("%s/styles.min.css", OutputDir), "--minify")
-
-	_, err := cmd.Output()
-	if err != nil {
-		fmt.Println("Error:", err)
-		return
 	}
 }
 

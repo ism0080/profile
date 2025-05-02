@@ -1,6 +1,37 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
+
+@theme {
+    /* Font Families */
+    --font-open-sans: "Open Sans", sans-serif;
+    --font-montserrat: Montserrat, sans-serif;
+    --font-playfair-display: "Playfair Display", serif;
+  
+    /* Shadow Green Color Shades */
+    --color-shadow-green-50: #f3f8f7;
+    --color-shadow-green-100: #e0edec;
+    --color-shadow-green-200: #c4dddc;
+    --color-shadow-green-300: #9bc5c3;
+    --color-shadow-green-400: #6ba5a2;
+    --color-shadow-green-500: #4f8b8a;
+    --color-shadow-green-600: #457475;
+    --color-shadow-green-700: #3c6062;
+    --color-shadow-green-800: #375153;
+    --color-shadow-green-900: #314648;
+    --color-shadow-green-950: #1d2d2f;
+  
+    /* Chathams Blue Color Shades */
+    --color-chathams-blue-50: #f1f9fe;
+    --color-chathams-blue-100: #e3f1fb;
+    --color-chathams-blue-200: #c0e3f7;
+    --color-chathams-blue-300: #89cdf0;
+    --color-chathams-blue-400: #4ab3e6;
+    --color-chathams-blue-500: #239ad4;
+    --color-chathams-blue-600: #157bb4;
+    --color-chathams-blue-700: #126292;
+    --color-chathams-blue-800: #13547a;
+    --color-chathams-blue-900: #154665;
+    --color-chathams-blue-950: #0e2d43;
+  }
 
 html,
 body {
@@ -9,6 +40,7 @@ body {
     padding: 0;
     background-color: #fff !important;
     color: #000;
+    font-size: 1em;
 }
 
 a {
@@ -18,11 +50,6 @@ a {
 
 * {
     box-sizing: border-box;
-}
-
-p {
-    font-family: Montserrat, sans-serif;
-    font-size: 1em;
 }
 
 .mockup-code:before {

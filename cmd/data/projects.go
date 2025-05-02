@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/ism0080/profile/models"
+	"github.com/ism0080/profile/cmd/models"
 )
 
 type ProjectType string

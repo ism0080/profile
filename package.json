@@ -2,9 +2,9 @@
   "name": "profile",
   "version": "1.0.0",
   "description": "Install Dependencies",
-  "main": "tailwind.config.js",
+  "main": "",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "generate": "templ generate; bunx @tailwindcss/cli -i ./index.css -o public/styles.min.css"
   },
   "repository": {
     "type": "git",
@@ -17,8 +17,5 @@
     "url": "https://github.com/ism0080/profile/issues"
   },
   "homepage": "https://github.com/ism0080/profile#readme",
-  "dependencies": {
-    "@tailwindcss/cli": "^4.1.5",
-    "tailwindcss": "^4.1.5"
-  }
+  "dependencies": {}
 }
