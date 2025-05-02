@@ -25,6 +25,7 @@ func HomePageData(baseUrl string) models.HomePage {
 			},
 			Navigation: models.Navigation{
 				models.NewMenuItem("Home", "./index.html"),
+				models.NewMenuItem("Blog", "/blog/index.html"),
 			},
 			Footer: models.Footer{
 				Email: email,

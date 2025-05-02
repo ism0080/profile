@@ -39,17 +39,11 @@ jobs:
       - name: 📨 Install dependencies
         id: install-deps
         run: |
-          go mod download
-          go install github.com/a-h/templ/cmd/templ@latest
           bun install
-      - name: 🔨 Generate Sytles & Templates
-        id: tailwindcss-cli
-        run: |
-          bun run generate
-      - name: 🔨 Write HTML Templates
+      - name: 🔨 Build
         id: build
         run: |
-          go run cmd/main.go
+          bun run build:all
       - name: ⚙️ Setup Pages
         id: configure-pages
         uses: actions/configure-pages@v3

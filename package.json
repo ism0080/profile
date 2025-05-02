@@ -4,7 +4,19 @@
   "description": "Install Dependencies",
   "main": "",
   "scripts": {
-    "generate": "templ generate; bunx @tailwindcss/cli -i ./index.css -o public/styles.min.css"
+    "preinstall": "go mod download; go install github.com/a-h/templ/cmd/templ@latest",
+    "astro": "astro",
+    "dev": "bunx --bun astro dev",
+    "preview": "bunx serve public",
+    "__build__": "",
+    "build:all": "bun run generate; bun run build",
+    "build": "bun run build:home; bun run build:blog",
+    "build:home": "go run cmd/main.go",
+    "build:blog": "bunx --bun astro build",
+    "__generate__": "",
+    "generate": "bun run generate:html; bun run generate:css",
+    "generate:html": "templ generate",
+    "generate:css": "bunx @tailwindcss/cli -i ./index.css -o public/styles.min.css"
   },
   "repository": {
     "type": "git",
@@ -17,5 +29,10 @@
     "url": "https://github.com/ism0080/profile/issues"
   },
   "homepage": "https://github.com/ism0080/profile#readme",
-  "dependencies": {}
+  "dependencies": {
+    "astro": "^5.7.10"
+  },
+  "devDependencies": {
+    "@types/bun": "^1.2.11"
+  }
 }
