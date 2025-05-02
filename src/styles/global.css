@@ -1,0 +1,101 @@
+@import "tailwindcss";
+
+@plugin "@tailwindcss/typography";
+
+@theme {
+    /* Font Families */
+    --font-open-sans: "Open Sans", sans-serif;
+    --font-montserrat: Montserrat, sans-serif;
+    --font-playfair-display: "Playfair Display", serif;
+  
+    /* Shadow Green Color Shades */
+    --color-shadow-green-50: #f3f8f7;
+    --color-shadow-green-100: #e0edec;
+    --color-shadow-green-200: #c4dddc;
+    --color-shadow-green-300: #9bc5c3;
+    --color-shadow-green-400: #6ba5a2;
+    --color-shadow-green-500: #4f8b8a;
+    --color-shadow-green-600: #457475;
+    --color-shadow-green-700: #3c6062;
+    --color-shadow-green-800: #375153;
+    --color-shadow-green-900: #314648;
+    --color-shadow-green-950: #1d2d2f;
+  
+    /* Chathams Blue Color Shades */
+    --color-chathams-blue-50: #f1f9fe;
+    --color-chathams-blue-100: #e3f1fb;
+    --color-chathams-blue-200: #c0e3f7;
+    --color-chathams-blue-300: #89cdf0;
+    --color-chathams-blue-400: #4ab3e6;
+    --color-chathams-blue-500: #239ad4;
+    --color-chathams-blue-600: #157bb4;
+    --color-chathams-blue-700: #126292;
+    --color-chathams-blue-800: #13547a;
+    --color-chathams-blue-900: #154665;
+    --color-chathams-blue-950: #0e2d43;
+  }
+
+html,
+body {
+    font-family: Montserrat, sans-serif;
+}
+
+
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Tailwind doesn't fully support some of the complex CSS selectors needed for code highlighting,
+so we need to keep some custom CSS but applied through Tailwind's plugin system
+These styles are for code highlighting that can't be easily implemented with just Tailwind */
+@layer utilities {
+    .content pre {
+        @apply p-0;
+    }
+
+    .content code {
+        @apply overflow-x-auto;
+    }
+
+    .content [data-rehype-pretty-code-figure] code {
+        @apply p-0;
+    }
+
+    .content pre > code span[data-line] {
+        @apply border-l-8 border-transparent px-2;
+    }
+
+    .content pre > code span:first-of-type {
+        @apply rounded-t-lg pt-2;
+    }
+
+    .content pre > code span:last-of-type {
+        @apply rounded-b-lg pb-2;
+    }
+
+    .content pre > code .highlighted {
+        @apply border-l-8 !border-gray-300/60 bg-gray-200/5;
+    }
+
+    .content pre > code[data-line-numbers] {
+        counter-reset: line;
+    }
+
+    .content pre > code[data-line-numbers] > span[data-line]::before {
+        counter-increment: line;
+        content: counter(line);
+        @apply mr-8 inline-block w-4 text-left text-[#7ca2dfad];
+    }
+
+    .content pre > code > span[data-line]::before {
+        content: '';
+        @apply inline-block w-4 text-right;
+    }
+
+    .content pre > code[data-line-numbers-max-digits='2'] > span[data-line]::before {
+        @apply w-8;
+    }
+
+    .content code[data-line-numbers-max-digits='3'] > span[data-line]::before {
+        @apply w-12;
+    }
+}

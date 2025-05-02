@@ -1,0 +1,47 @@
+---
+import Section from './Section.astro';
+import { AppConfig } from '~/utils/app-config';
+
+const {
+    routes: { sitemap, rss, tags, home }
+} = AppConfig;
+
+const footerNavigation = [
+    {
+        title: 'Tags',
+        href: tags
+    },
+    {
+        title: 'About',
+        href: home
+    },
+    {
+        title: 'RSS',
+        href: rss
+    },
+    {
+        title: 'Sitemap',
+        href: sitemap
+    }
+];
+
+const year = new Date();
+---
+
+<Section>
+    <footer class="text-center">
+        <div class="pb-4">
+            {
+                footerNavigation.map(({ href, title }) => (
+                    <>
+                        <a href={href} class="underline hover:no-underline">
+                            {title}
+                        </a>
+                        <span class="last:hidden mx-1">-</span>
+                    </>
+                ))
+            }
+        </div>
+        © {year.getFullYear()}
+    </footer>
+</Section>

@@ -1,15 +1,21 @@
 ---
+import type { MarkdownInstance } from 'astro';
+import { AppConfig } from '~/utils/app-config';
+import Base from '~/layouts/base.astro';
+import { sortPostsByDate } from '~/utils/data.util';
+import Hero from '~/components/Hero.astro';
+import LatestPosts from '~/components/LatestPosts.astro';
 
+const { title, description } = AppConfig;
+
+const allPosts = Object.values(
+    import.meta.glob('./posts/*.md', { eager: true })
+) as MarkdownInstance<any>[];
+allPosts.sort(sortPostsByDate);
+const latestPosts = allPosts.slice(0, 3);
 ---
 
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <link rel="shortcut icon" href="/assets/isaac_profile-nobg.png" />
-        <meta name="viewport" content="width=device-width" />
-        <title>Astro</title>
-    </head>
-    <body>
-        <h1>Isaac Mackle Blog</h1>
-    </body>
-</html>
+<Base head={{ title, description }}>
+    <Hero />
+    <LatestPosts posts={latestPosts} />
+</Base>
