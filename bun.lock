@@ -1,5 +1,6 @@
 {
   "lockfileVersion": 1,
+  "configVersion": 0,
   "workspaces": {
     "": {
       "name": "profile",
@@ -11,6 +12,7 @@
         "@tailwindcss/vite": "^4.1.5",
         "astro": "^5.7.10",
         "mdast-util-to-string": "^4.0.0",
+        "onedollarstats": "^0.0.11",
         "reading-time": "^1.5.0",
         "rehype-pretty-code": "^0.14.1",
         "tailwindcss": "^4.1.5",
@@ -637,6 +639,8 @@
     "ofetch": ["ofetch@1.4.1", "", { "dependencies": { "destr": "^2.0.3", "node-fetch-native": "^1.6.4", "ufo": "^1.5.4" } }, "sha512-QZj2DfGplQAr2oj9KzceK9Hwz6Whxazmn85yYeVuS3u9XTMOGMRx0kO95MQ+vLsj/S/NwBDMMLU5hpxvI6Tklw=="],
 
     "ohash": ["ohash@2.0.11", "", {}, "sha512-RdR9FQrFwNBNXAr4GixM8YaRZRJ5PUWbKYbE5eOsrwAjJW0q2REGcf79oYPsLyskQCZG1PLN+S/K1V00joZAoQ=="],
+
+    "onedollarstats": ["onedollarstats@0.0.11", "", {}, "sha512-GboD/AZdfQB9Bhs0uupp40jG/F+yI4ed7rkUI6zbtXXqqKdo8qlT1ZqGATXF4zccBXnPylUvG7bYpiDyaONpjg=="],
 
     "oniguruma-parser": ["oniguruma-parser@0.12.1", "", {}, "sha512-8Unqkvk1RYc6yq2WBYRj4hdnsAxVze8i7iPfQr8e4uSP3tRv0rpZcbGUDvxfQQcdwHt/e9PrMvGCsa8OqG9X3w=="],
 
