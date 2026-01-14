@@ -1,19 +1,17 @@
 package components
 
-import (
-  "github.com/ism0080/profile/cmd/models"
-)
+import "github.com/ism0080/profile/cmd/models"
 
 templ Navigation(navigation models.Navigation) {
-<nav class="container sticky top-5 z-50 mx-auto px-4">
-    <div class="flex w-full justify-end">
-        <ul class="flex text-chathams-blue-950">
-            for _, item := range navigation{
-              <li class="px-2 last:pr-0">
-                <a href={ templ.URL(item.Url) } class="hover:font-bold duration-150 ease-in-out">{ item.Name }</a>
-            </li>
-            }
-        </ul>
-    </div>
-</nav>
+	<nav class="container sticky top-5 z-50 mx-auto px-4">
+		<div class="flex w-full justify-end">
+			<ul class="flex text-chathams-blue-950">
+				for _, item := range navigation {
+					<li class="px-2 last:pr-0">
+						<a href={ templ.URL(item.Url) } class="hover:font-bold duration-150 ease-in-out" data-s-event={ item.Name + " navigation" }>{ item.Name }</a>
+					</li>
+				}
+			</ul>
+		</div>
+	</nav>
 }

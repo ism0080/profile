@@ -32,13 +32,13 @@ templ Footer(data models.Footer) {
 </style>
 	<footer class="flex gap-4 justify-center w-full bg-shadow-green-100 h-[60px] items-center mt-4">
 		<div class="flex items-center gap-2">
-			<button onclick={ copyToClipboard(data.Email) }>
+			<button onclick={ copyToClipboard(data.Email) } data-s-event="Copy Email">
 				@icons.Copy()
 			</button>
 			<p class="select-all">{ data.Email }</p>
 		</div>
 		for _, button := range data.Links {
-			<a href={ templ.URL(button.Url) } target="_blank" rel="noopener noreferrer">
+			<a href={ templ.URL(button.Url) } target="_blank" rel="noopener noreferrer" data-s-event={ button.Label + " footer" }>
 				<p class="hover:font-bold">{ button.Label }</p>
 			</a>
 		}

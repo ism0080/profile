@@ -34,6 +34,8 @@ func main() {
 	if err != nil {
 		log.Fatalf("Failed to copy assets directory: %v", err)
 	}
+
+	log.Println("Site generated successfully.")
 }
 
 func createDirIfNotExists() {
